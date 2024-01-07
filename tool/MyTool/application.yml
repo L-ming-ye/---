@@ -1,0 +1,38 @@
+server:
+  port: 8001 #内网穿透控制的端口
+
+frp:
+  password: 123 #控制内网穿透控制的密码
+  #内网穿透控制的的配置
+  web:
+    url: web.bat
+    start: /start
+  #被控制的服务端
+  client:
+    #pc - 名字用于接口获取指定的服务端不可重复
+    pc:
+      url: pc.bat #bat路径 配置了文件变量这里没使用绝对路径
+      start: /start #启动参数/xxx bat可修改
+      shutdown: /shutdown  #关闭参数 同上
+      check: /check #检查状态参数 同上
+    ftp:
+      url: ftp.bat #bat路径 配置了文件变量这里没使用绝对路径
+      start: /start #启动参数/xxx bat可修改
+      shutdown: /shutdown  #关闭参数 同上
+      check: /check #检查状态参数 同上
+
+spring:
+  mail:
+    to:  #收件人如果说启动失败发送邮件通知为空则不发
+    host: smtp.exmail.qq.com
+    port: 465
+    from:  #发送名字 一般同下用户名 自定义发送名字：xxx<用户名>
+    username:  #用户名
+    password:  #密码授权码
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
